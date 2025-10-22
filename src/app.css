@@ -142,11 +142,18 @@ body {
 
 .tv-table th,
 .tv-table td {
-	padding: 1rem 1.5rem;
+	padding: 0.75rem 1rem;
 	text-align: left;
 }
 
-@media (min-width: 80rem) {
+@media (min-width: 100rem) {
+	.tv-table th,
+	.tv-table td {
+		padding: 1rem 1.5rem;
+	}
+}
+
+@media (min-width: 120rem) {
 	.tv-table th,
 	.tv-table td {
 		padding: 1.5rem 2rem;
@@ -178,15 +185,31 @@ body {
 	color: var(--pico-secondary);
 }
 
-/* Responsive font sizes for TV - optimized for large displays */
-/* Base size for TV displays (1920x1080 or larger) */
+/* Responsive font sizes - optimized for different display sizes */
+/* Base size for mobile/small screens */
 :root {
-	--pico-font-size: 200%; /* Increased base size for TV */
+	--pico-font-size: 100%;
 }
 
+/* Tablets and small laptops (768px+) */
 @media (min-width: 48rem) {
 	:root {
-		--pico-font-size: 225%;
+		--pico-font-size: 112.5%;
+	}
+	.status-indicator {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+	.icon {
+		width: 1.25rem !important;
+		height: 1.25rem !important;
+	}
+}
+
+/* Desktop monitors 24"-27" (1024px+) */
+@media (min-width: 64rem) {
+	:root {
+		--pico-font-size: 125%;
 	}
 	.status-indicator {
 		width: 2rem;
@@ -198,13 +221,29 @@ body {
 	}
 }
 
-@media (min-width: 64rem) {
+/* Large desktop monitors 27"-32" (1280px+) */
+@media (min-width: 80rem) {
 	:root {
-		--pico-font-size: 250%;
+		--pico-font-size: 150%;
 	}
 	.status-indicator {
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2.25rem;
+		height: 2.25rem;
+	}
+	.icon {
+		width: 1.5rem !important;
+		height: 1.5rem !important;
+	}
+}
+
+/* Small TVs 40"-50" (1600px+) */
+@media (min-width: 100rem) {
+	:root {
+		--pico-font-size: 225%;
+	}
+	.status-indicator {
+		width: 2.75rem;
+		height: 2.75rem;
 	}
 	.icon {
 		width: 1.75rem !important;
@@ -212,13 +251,14 @@ body {
 	}
 }
 
-@media (min-width: 80rem) {
+/* Large TVs 55"-65" (1920px+) */
+@media (min-width: 120rem) {
 	:root {
 		--pico-font-size: 300%;
 	}
 	.status-indicator {
-		width: 3rem;
-		height: 3rem;
+		width: 3.5rem;
+		height: 3.5rem;
 	}
 	.icon {
 		width: 2rem !important;
@@ -226,14 +266,14 @@ body {
 	}
 }
 
-/* Extra large displays (1920px+) - typical for 60" TVs */
-@media (min-width: 120rem) {
+/* Extra large TVs 70"+ (2560px+) */
+@media (min-width: 160rem) {
 	:root {
-		--pico-font-size: 350%;
+		--pico-font-size: 375%;
 	}
 	.status-indicator {
-		width: 3.5rem;
-		height: 3.5rem;
+		width: 4rem;
+		height: 4rem;
 	}
 	.icon {
 		width: 2.5rem !important;
