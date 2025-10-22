@@ -1,1 +1,214 @@
-@import 'tailwindcss';
+/* Import Pico CSS */
+@import '@picocss/pico/css/pico.min.css';
+
+/* Custom styles for TV display */
+:root {
+	--pico-font-size: 100%;
+	--pico-border-radius: 0.5rem;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+/* Prevent text selection for TV display */
+* {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+/* Custom utility classes */
+.container-fluid {
+	padding: 1rem;
+	margin: 0;
+	max-width: 100%;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.items-center {
+	align-items: center;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.gap-1 {
+	gap: 0.5rem;
+}
+
+.gap-2 {
+	gap: 1rem;
+}
+
+.gap-4 {
+	gap: 2rem;
+}
+
+.grid {
+	display: grid;
+}
+
+.grid-cols-9 {
+	grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.col-span-2 {
+	grid-column: span 2 / span 2;
+}
+
+.col-span-3 {
+	grid-column: span 3 / span 3;
+}
+
+.h-screen {
+	height: 100vh;
+}
+
+.w-full {
+	width: 100%;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.overflow-y-auto {
+	overflow-y: auto;
+}
+
+.truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.shrink-0 {
+	flex-shrink: 0;
+}
+
+.flex-1 {
+	flex: 1 1 0%;
+}
+
+.min-h-0 {
+	min-height: 0;
+}
+
+/* Status indicator */
+.status-indicator {
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.status-online {
+	background-color: var(--pico-ins-color);
+}
+
+/* Table styles for TV */
+.tv-table {
+	width: 100%;
+	margin: 0;
+	border-collapse: collapse;
+}
+
+.tv-table thead {
+	background-color: var(--pico-background-color);
+	color: var(--pico-contrast);
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.tv-table th,
+.tv-table td {
+	padding: 0.75rem 1rem;
+	text-align: left;
+}
+
+.tv-table tbody tr:nth-child(even) {
+	background-color: var(--pico-card-background-color);
+}
+
+.tv-table tbody tr:hover {
+	background-color: var(--pico-secondary-background);
+}
+
+/* Icon styles */
+.icon {
+	width: 1.5rem;
+	height: 1.5rem;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.icon-user {
+	color: var(--pico-primary);
+}
+
+.icon-workcenter {
+	color: var(--pico-secondary);
+}
+
+/* Responsive font sizes for TV */
+@media (min-width: 48rem) {
+	:root {
+		--pico-font-size: 112.5%;
+	}
+	.status-indicator {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+	.icon {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+}
+
+@media (min-width: 64rem) {
+	:root {
+		--pico-font-size: 125%;
+	}
+	.status-indicator {
+		width: 2rem;
+		height: 2rem;
+	}
+	.icon {
+		width: 2rem;
+		height: 2rem;
+	}
+}
+
+@media (min-width: 80rem) {
+	:root {
+		--pico-font-size: 150%;
+	}
+	.status-indicator {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+}

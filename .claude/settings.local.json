@@ -8,7 +8,12 @@
       "mcp__dokku-server__exec",
       "Bash(pnpm add:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(echo:*)",
+      "Read(//c/Users/pc02/AppData/Roaming/**)",
+      "Bash(git remote add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
