@@ -10,7 +10,9 @@ const config = {
 		paths: {
 			// Use absolute paths for assets to fix loading issues in Anthias
 			relative: false
-		}
+		},
+		// Inline all assets for better Anthias compatibility
+		inlineStyleThreshold: Infinity
 	}
 };
 
