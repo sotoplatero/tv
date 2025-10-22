@@ -15,6 +15,18 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
+# Define build arguments for environment variables
+ARG ODOO_URL
+ARG ODOO_DATABASE
+ARG ODOO_USERNAME
+ARG ODOO_PASSWORD
+
+# Set environment variables for build
+ENV ODOO_URL=$ODOO_URL
+ENV ODOO_DATABASE=$ODOO_DATABASE
+ENV ODOO_USERNAME=$ODOO_USERNAME
+ENV ODOO_PASSWORD=$ODOO_PASSWORD
+
 # Build the application
 RUN pnpm run build
 
