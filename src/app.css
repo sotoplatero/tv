@@ -156,10 +156,11 @@ body {
 
 /* Icon styles */
 .icon {
-	width: 1rem;
-	height: 1rem;
+	width: 1rem !important;
+	height: 1rem !important;
 	display: inline-block;
 	vertical-align: middle;
+	flex-shrink: 0;
 }
 
 .icon-user {
