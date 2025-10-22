@@ -142,8 +142,15 @@ body {
 
 .tv-table th,
 .tv-table td {
-	padding: 0.75rem 1rem;
+	padding: 1rem 1.5rem;
 	text-align: left;
+}
+
+@media (min-width: 80rem) {
+	.tv-table th,
+	.tv-table td {
+		padding: 1.5rem 2rem;
+	}
 }
 
 .tv-table tbody tr:nth-child(even) {
@@ -171,45 +178,65 @@ body {
 	color: var(--pico-secondary);
 }
 
-/* Responsive font sizes for TV */
+/* Responsive font sizes for TV - optimized for large displays */
+/* Base size for TV displays (1920x1080 or larger) */
+:root {
+	--pico-font-size: 200%; /* Increased base size for TV */
+}
+
 @media (min-width: 48rem) {
 	:root {
-		--pico-font-size: 112.5%;
+		--pico-font-size: 225%;
 	}
 	.status-indicator {
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 2rem;
+		height: 2rem;
 	}
 	.icon {
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.5rem !important;
+		height: 1.5rem !important;
 	}
 }
 
 @media (min-width: 64rem) {
 	:root {
-		--pico-font-size: 125%;
+		--pico-font-size: 250%;
 	}
 	.status-indicator {
-		width: 2rem;
-		height: 2rem;
+		width: 2.5rem;
+		height: 2.5rem;
 	}
 	.icon {
-		width: 2rem;
-		height: 2rem;
+		width: 1.75rem !important;
+		height: 1.75rem !important;
 	}
 }
 
 @media (min-width: 80rem) {
 	:root {
-		--pico-font-size: 150%;
+		--pico-font-size: 300%;
 	}
 	.status-indicator {
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 3rem;
+		height: 3rem;
 	}
 	.icon {
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2rem !important;
+		height: 2rem !important;
+	}
+}
+
+/* Extra large displays (1920px+) - typical for 60" TVs */
+@media (min-width: 120rem) {
+	:root {
+		--pico-font-size: 350%;
+	}
+	.status-indicator {
+		width: 3.5rem;
+		height: 3.5rem;
+	}
+	.icon {
+		width: 2.5rem !important;
+		height: 2.5rem !important;
 	}
 }
