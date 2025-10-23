@@ -1,0 +1,35 @@
+/* ---- Typography scaling for TV display ---- */
+@media (min-width: 1920px) {
+  html { font-size: 105%; }
+}
+@media (min-width: 2560px) {
+  html { font-size: 275%; }
+}
+
+/* ---- Full width container ---- */
+.container {
+  max-width: 100% !important;
+  padding: 2rem;
+}
+
+/* ---- Status indicator ---- */
+.status-indicator {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: #9b4dca; /* Milligram primary color */
+  margin-right: 0.3em;
+  vertical-align: middle;
+}
+
+/* ---- Prevent text selection ---- */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---- Prevent screen sleep ---- */
+body {
+  overflow: hidden;
+}

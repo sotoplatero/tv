@@ -17,14 +17,14 @@ body {
   body { font-size: 28px; }
 }
 @media (min-width: 2560px) {
-  body { font-size: 44px; }
+  body { font-size: 72px; }
 }
 
 /* ---- Override Milligram container ---- */
 .container {
   width: 100%;
   max-width: 100% !important;
-  padding: 0 4rem;
+  padding: 8rem;
   margin: 0;
 }
 
@@ -39,8 +39,7 @@ header {
 
 header h1 {
   margin-bottom: 0;
-  color: #f1f1f1;
-  font-size: 1.5em;
+  font-weight: 800;
 }
 
 .status-indicator {

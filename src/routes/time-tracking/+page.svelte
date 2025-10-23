@@ -22,9 +22,9 @@
 </script>
 
 <main class="container">
-  <header>
-    <h1>Work Order Time Tracking</h1>
-    <div class="text-right">
+  <header class="row">
+    <h2 class="column"><strong>Work Order Time Tracking</strong> </h2>
+    <div class="column" style="text-align: right;">
       <span class="status-indicator"></span>
       <strong>{data.records.length} orders</strong>
     </div>
