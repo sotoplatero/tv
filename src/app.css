@@ -1,19 +1,16 @@
-
-
-/* ---- Fullscreen container for Anthias ---- */
-.container-fluid {
-  max-width: none !important;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+/* ---- Base styles for TV display ---- */
+* {
+  box-sizing: border-box;
 }
 
-/* ---- Typography scaling ---- */
 body {
   background-color: #0b0b0b;
   color: #f1f1f1;
   font-size: 28px; /* baseline for 1080p TV */
   line-height: 1.4;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 @media (min-width: 1920px) {
@@ -23,13 +20,29 @@ body {
   body { font-size: 44px; }
 }
 
+/* ---- Override Milligram container ---- */
+.container {
+  width: 100%;
+  max-width: 100% !important;
+  padding: 0 4rem;
+  margin: 0;
+}
+
 /* ---- Header & Status ---- */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
 }
+
+header h1 {
+  margin-bottom: 0;
+  color: #f1f1f1;
+  font-size: 1.5em;
+}
+
 .status-indicator {
   display: inline-block;
   width: 1em;
@@ -37,6 +50,7 @@ header {
   border-radius: 50%;
   background: #0f0;
   margin-right: 0.3em;
+  vertical-align: middle;
 }
 
 /* ---- Tables ---- */
@@ -44,30 +58,82 @@ table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+  margin-bottom: 1rem;
+  background: transparent;
 }
+
 thead {
   background: #181818;
+  border-bottom: 2px solid #0af;
+}
+
+thead th {
   color: #0af;
   text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 2px solid #0af;
+  padding: 0.5em 0.75em;
 }
+
 th, td {
   padding: 0.5em 0.75em;
-  border-bottom: 1px solid #666;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  color: #f1f1f1;
 }
+
+tbody tr {
+  background: #0b0b0b;
+}
+
 tbody tr:nth-child(even) {
   background: #141414;
 }
+
 tbody tr:hover {
   background: #1e1e1e;
 }
 
 /* ---- Alerts & Empty states ---- */
-article[role="alert"] {
+.alert {
   background: #300;
   color: #faa;
   border: 2px solid #500;
   padding: 1em;
   margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.alert h3 {
+  color: #faa;
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  background: #141414;
+  border-radius: 4px;
+  margin-top: 2rem;
+}
+
+.empty-state h2 {
+  color: #0af;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #999;
+  margin: 0;
+}
+
+/* ---- Utility classes ---- */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 /* ---- Prevent selection ---- */

@@ -18,22 +18,23 @@
   onDestroy(() => intervalId && clearInterval(intervalId));
 </script>
 
-<main class="container-fluid">
+<main class="container">
   <header>
     <h1>Work Order Time Tracking</h1>
-    <nav aria-label="Status" style="text-align: right;">
+    <div class="text-right">
+      <span class="status-indicator"></span>
       <strong>{data.records.length} orders</strong>
-    </nav>
+    </div>
   </header>
 
   {#if data.error}
-    <article role="alert">
+    <div class="alert">
       <h3>{data.error}</h3>
-    </article>
+    </div>
   {/if}
 
   {#if data.records.length > 0}
-    <table role="grid">
+    <table class="u-full-width">
       <thead>
         <tr>
           <th>Work Order</th>
@@ -49,7 +50,7 @@
 
             <td>
               {#if record.employee_id && Array.isArray(record.employee_id)}
-                <small>👤</small> {record.employee_id[1]}
+                <small>👤</small> {record.employee_id[1].replace(/[^a-zA-Z\s]/g,'').trim()}
               {:else}-{/if}
             </td>
 
@@ -75,9 +76,9 @@
       </tbody>
     </table>
   {:else}
-    <article class="text-center">
+    <div class="empty-state">
       <h2>No Active Orders</h2>
       <p>All work orders have been completed</p>
-    </article>
+    </div>
   {/if}
 </main>
