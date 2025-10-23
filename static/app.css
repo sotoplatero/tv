@@ -12,15 +12,76 @@
   padding: 2rem;
 }
 
+header h2 {
+  color: #606c76;
+  margin-bottom: 0;
+}
+
 /* ---- Status indicator ---- */
 .status-indicator {
   display: inline-block;
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  background: #9b4dca; /* Milligram primary color */
-  margin-right: 0.3em;
+  background: #32b643;
+  margin-right: 0.5em;
   vertical-align: middle;
+}
+
+/* ---- Table enhancements ---- */
+table {
+  border: 1px solid #e1e4e8;
+}
+
+thead th {
+  background-color: #f4f5f6;
+  color: #606c76;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #9b4dca;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafbfc;
+}
+
+td {
+  font-size: 0.95em;
+}
+
+/* ---- Alert styling ---- */
+.alert {
+  background-color: #ffe5e5;
+  border: 2px solid #ff6b6b;
+  border-left: 5px solid #ff6b6b;
+  color: #c92a2a;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
+}
+
+.alert h3 {
+  color: #c92a2a;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ---- Empty state ---- */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f4f5f6;
+  border-radius: 0.4rem;
+  border: 2px dashed #d1d5db;
+}
+
+.empty-state h2 {
+  color: #9b4dca;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #606c76;
 }
 
 /* ---- Prevent text selection ---- */
@@ -32,4 +93,5 @@
 /* ---- Prevent screen sleep ---- */
 body {
   overflow: hidden;
+  background-color: #ffffff;
 }
