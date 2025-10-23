@@ -1,13 +1,16 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { invalidate } from '$app/navigation';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
   let intervalId: ReturnType<typeof setInterval> | null = null;
 
   onMount(() => {
-    // Reload periodically to keep the dashboard fresh
-    intervalId = setInterval(() => location.reload(), 30000);
+    // Reload data periodically without full page refresh
+    intervalId = setInterval(() => {
+      invalidate('app:time-tracking');
+    }, 30000);
 
     // Prevent sleep on compatible browsers
     if ('wakeLock' in navigator) {
@@ -69,6 +72,7 @@
                   {new Date(record.date_start).toLocaleTimeString('en-US', {
                     hour: '2-digit', minute: '2-digit', timeZone: 'America/Toronto'
                   })}
+
               {:else}-{/if}
             </td>
           </tr>

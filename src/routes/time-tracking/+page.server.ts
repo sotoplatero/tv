@@ -1,7 +1,8 @@
 import { createOdooClient } from '$lib/odoo-client.js';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ depends }) => {
+  depends('app:time-tracking');
   try {
     const client = createOdooClient();
 
