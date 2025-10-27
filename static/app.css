@@ -3,7 +3,7 @@
   html { font-size: 105%; }
 }
 @media (min-width: 2560px) {
-  html { font-size: 275%; }
+  html { font-size: 400%; }
 }
 
 /* ---- Full width container ---- */
