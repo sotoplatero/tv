@@ -1,38 +1,61 @@
-# sv
+# Krka TV Dashboards
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+SvelteKit app that displays dashboard pages on TV screens in a manufacturing
+environment. It connects to an **Odoo** ERP over JSON-RPC and is built to run
+continuously on large displays, optimized for viewing from a distance.
 
-## Creating a project
+## Pages
 
-If you're seeing this, you've probably already done this step. Congrats!
+- `/` — index linking to the available dashboards.
+- `/time-tracking` — live "avatar roster" of active manufacturing work orders
+  (`mrp.workcenter.productivity`): employee photo + name, work order, work
+  center, and start time. Auto-refreshes every 30s and shows a live clock.
 
-```sh
-# create a new project in the current directory
-npx sv create
+## Tech
 
-# create a new project in my-app
-npx sv create my-app
+- **SvelteKit 2 + Svelte 5** (runes)
+- **Pico CSS** (CDN) + a single global `static/app.css`; light theme forced via
+  `data-theme="light"`. TV sizing is driven by root `font-size` breakpoints in
+  `app.css` (everything else is `rem`/`em`).
+- **Odoo** JSON-RPC client in `src/lib/odoo-client.js`
+- **adapter-node**, shipped as a Docker image
+
+## Development
+
+```bash
+pnpm install
+pnpm dev            # dev server
+pnpm dev -- --open  # dev server + open browser
+pnpm build          # production build
+pnpm preview        # preview the production build
+pnpm check          # type checking
 ```
 
-## Developing
+> This project uses **pnpm**.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Environment
 
-```sh
-npm run dev
+Copy `.env.example` to `.env` and fill in:
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+ODOO_URL=https://your-odoo-instance.com
+ODOO_DATABASE=your_database_name
+ODOO_USERNAME=your_api_username
+ODOO_PASSWORD=your_api_password
 ```
 
-## Building
+Variables are read server-side at runtime via `$env/dynamic/private`. In
+production set them in the deploy platform's environment (e.g. Dokploy →
+Environment).
 
-To create a production version of your app:
+## Deployment
 
-```sh
-npm run build
-```
+Docker multi-stage build (`Dockerfile`, `node:20-alpine`, port 3000), deployed
+on Dokploy/Dokku.
 
-You can preview the production build with `npm run preview`.
+- Dokploy: use the **Dockerfile** build type, set the `ODOO_*` vars in the
+  Environment tab, and serve over **HTTPS** (required for the screen Wake Lock
+  to keep the TV awake).
+- pnpm is pinned to `10.0.0` in the Dockerfile to match `pnpm-lock.yaml`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+See [`CLAUDE.md`](./CLAUDE.md) for architecture details and gotchas.
