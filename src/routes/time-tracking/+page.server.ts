@@ -29,8 +29,30 @@ export const load: PageServerLoad = async ({ depends }) => {
       limit: 50
     });
 
+    // Fetch employee avatars (Odoo stores them as base64 on hr.employee.image_128)
+    const employeeIds = [
+      ...new Set(
+        records
+          .filter((r: any) => Array.isArray(r.employee_id))
+          .map((r: any) => r.employee_id[0])
+      )
+    ];
+
+    const imageById = new Map<number, string>();
+    if (employeeIds.length > 0) {
+      const employees = await client.read('hr.employee', employeeIds, ['id', 'image_128']);
+      for (const emp of employees) {
+        if (emp.image_128) imageById.set(emp.id, emp.image_128);
+      }
+    }
+
+    const recordsWithAvatars = records.map((r: any) => ({
+      ...r,
+      employee_image: Array.isArray(r.employee_id) ? imageById.get(r.employee_id[0]) ?? null : null
+    }));
+
     return {
-      records,
+      records: recordsWithAvatars,
       error: null
     };
 
