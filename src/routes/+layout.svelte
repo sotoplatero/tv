@@ -45,4 +45,8 @@
 	<link rel="stylesheet" href="/app.css">
 </svelte:head>
 
+  <video muted loop autoplay playsinline
+    src="https://tv.krka.ca/keepalive.mp4"
+    style="position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none;opacity:.01"></video>
+
 {@render children?.()}
