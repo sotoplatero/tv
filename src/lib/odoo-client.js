@@ -1,4 +1,4 @@
-import { ODOO_URL, ODOO_DATABASE, ODOO_USERNAME, ODOO_PASSWORD } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export class OdooClient {
   constructor(config) {
@@ -121,6 +121,9 @@ export class OdooClient {
 }
 
 export function createOdooClient() {
+  // Read at runtime (works with runtime-injected env vars in Docker/Dokploy)
+  const { ODOO_URL, ODOO_DATABASE, ODOO_USERNAME, ODOO_PASSWORD } = env;
+
   // Validate required environment variables
   if (!ODOO_URL || !ODOO_DATABASE || !ODOO_USERNAME || !ODOO_PASSWORD) {
     throw new Error('Missing required Odoo environment variables. Check your .env file.');
