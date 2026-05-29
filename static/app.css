@@ -1,17 +1,13 @@
-/* ---- Typography scaling for TV display ---- */
-/* Sized for viewing a 60" TV from across the room. Base bumped up so even
-   smaller panels stay legible; larger breakpoints scale with 1440p/4K TVs. */
-html { font-size: 130%; }
-
-@media (min-width: 1920px) {
-  html { font-size: 200%; }
-}
-@media (min-width: 2560px) {
-  html { font-size: 260%; }
-}
-@media (min-width: 3840px) {
-  html { font-size: 380%; }
-}
+/* ---- Typography scaling by viewport width ----
+   NOTE: width alone can't distinguish a 27" monitor from a same-resolution TV
+   (both 1440p report 2560px). These graduated steps keep a 27" 1440p/4K monitor
+   comfortable while letting genuinely large displays scale up. Tune as needed. */
+html { font-size: 100%; }                                  /* laptops */
+@media (min-width: 1440px) { html { font-size: 110%; } }   /* large desktop */
+@media (min-width: 1920px) { html { font-size: 120%; } }   /* 1080p */
+@media (min-width: 2560px) { html { font-size: 130%; } }   /* 1440p — 27" monitor */
+@media (min-width: 3000px) { html { font-size: 175%; } }   /* entry 4K / large panels */
+@media (min-width: 3840px) { html { font-size: 240%; } }   /* 4K — 60" TV */
 
 /* ---- Full width container ---- */
 .container {
