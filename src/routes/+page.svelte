@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<main class="container">
+	<header class="row">
+		<h2 class="column"><strong>TV Dashboards</strong></h2>
+	</header>
+
+	<ul>
+		<li><a href="/time-tracking">Work Order Time Tracking</a></li>
+	</ul>
+</main>

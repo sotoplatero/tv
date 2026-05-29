@@ -1,9 +1,16 @@
 /* ---- Typography scaling for TV display ---- */
+/* Sized for viewing a 60" TV from across the room. Base bumped up so even
+   smaller panels stay legible; larger breakpoints scale with 1440p/4K TVs. */
+html { font-size: 130%; }
+
 @media (min-width: 1920px) {
-  html { font-size: 105%; }
+  html { font-size: 200%; }
 }
 @media (min-width: 2560px) {
-  html { font-size: 275%; }
+  html { font-size: 260%; }
+}
+@media (min-width: 3840px) {
+  html { font-size: 380%; }
 }
 
 /* ---- Full width container ---- */
@@ -47,7 +54,8 @@ tbody tr:nth-child(even) {
 }
 
 td {
-  font-size: 0.95em;
+  font-size: 1em;
+  color: #333;
 }
 
 /* ---- Alert styling ---- */
