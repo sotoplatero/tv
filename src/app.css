@@ -14,10 +14,10 @@ body {
 }
 
 @media (min-width: 1920px) {
-  body { font-size: 28px; }
+  body { font-size: 30px; }
 }
 @media (min-width: 2560px) {
-  body { font-size: 72px; }
+  body { font-size: 80px; }
 }
 
 /* ---- Override Milligram container ---- */
