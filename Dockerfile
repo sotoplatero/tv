@@ -1,8 +1,8 @@
 # Build stage
 FROM node:20-alpine AS builder
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Install pnpm (pinned to match pnpm-lock.yaml v9.0 / local pnpm 10)
+RUN npm install -g pnpm@10.0.0
 
 WORKDIR /app
 
@@ -33,8 +33,8 @@ RUN pnpm run build
 # Production stage
 FROM node:20-alpine
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Install pnpm (pinned to match pnpm-lock.yaml v9.0 / local pnpm 10)
+RUN npm install -g pnpm@10.0.0
 
 WORKDIR /app
 
