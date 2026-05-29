@@ -7,15 +7,11 @@
   let intervalId: ReturnType<typeof setInterval> | null = null;
 
   onMount(() => {
-    // Reload data periodically without full page refresh
+    // Reload data periodically without full page refresh.
+    // (Screen wake lock is handled app-wide in +layout.svelte.)
     intervalId = setInterval(() => {
       invalidate('app:time-tracking');
     }, 30000);
-
-    // Prevent sleep on compatible browsers
-    if ('wakeLock' in navigator) {
-      navigator.wakeLock.request('screen').catch(() => {});
-    }
   });
 
   onDestroy(() => intervalId && clearInterval(intervalId));
