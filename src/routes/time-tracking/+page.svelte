@@ -78,7 +78,7 @@
         <tr>
           <th>Employee</th>
           <th>Work Order</th>
-          <th>Work Center</th>
+          <th>Project</th>
           <th>Started</th>
         </tr>
       </thead>
@@ -111,8 +111,8 @@
             <td>{record.workorder_name || record.display_name}</td>
 
             <td>
-              {#if record.workcenter_id && Array.isArray(record.workcenter_id)}
-                <small>⚙️</small> {record.workcenter_id[1]}
+              {#if record.project_name}
+                <small>📁</small> {record.project_name}
               {:else}—{/if}
             </td>
 

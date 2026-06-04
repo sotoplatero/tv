@@ -46,9 +46,28 @@ export const load: PageServerLoad = async ({ depends }) => {
       }
     }
 
+    // The project name lives on mrp.production (project_id), not on the
+    // productivity record — fetch it via each record's production_id.
+    const productionIds = [
+      ...new Set(
+        records
+          .filter((r: any) => Array.isArray(r.production_id))
+          .map((r: any) => r.production_id[0])
+      )
+    ];
+
+    const projectById = new Map<number, string>();
+    if (productionIds.length > 0) {
+      const productions = await client.read('mrp.production', productionIds, ['id', 'project_id']);
+      for (const prod of productions) {
+        if (Array.isArray(prod.project_id)) projectById.set(prod.id, prod.project_id[1]);
+      }
+    }
+
     const recordsWithAvatars = records.map((r: any) => ({
       ...r,
-      employee_image: Array.isArray(r.employee_id) ? imageById.get(r.employee_id[0]) ?? null : null
+      employee_image: Array.isArray(r.employee_id) ? imageById.get(r.employee_id[0]) ?? null : null,
+      project_name: Array.isArray(r.production_id) ? projectById.get(r.production_id[0]) ?? null : null
     }));
 
     return {
