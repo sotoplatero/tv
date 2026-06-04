@@ -4,11 +4,6 @@
 
 	let { children } = $props();
 
-	// TEMP DEBUG: show what CSS viewport width the TV actually reports.
-	let vw = $state(0);
-	let vh = $state(0);
-	let dpr = $state(0);
-
 	/** @type {WakeLockSentinel | null} */
 	let wakeLock = null;
 
@@ -33,23 +28,12 @@
 		}
 	}
 
-	function readViewport() {
-		vw = window.innerWidth;
-		vh = window.innerHeight;
-		dpr = window.devicePixelRatio;
-	}
-
 	onMount(() => {
 		requestWakeLock();
 		document.addEventListener('visibilitychange', handleVisibilityChange);
 
-		// TEMP DEBUG
-		readViewport();
-		window.addEventListener('resize', readViewport);
-
 		return () => {
 			document.removeEventListener('visibilitychange', handleVisibilityChange);
-			window.removeEventListener('resize', readViewport);
 			wakeLock?.release().catch(() => {});
 		};
 	});
@@ -66,9 +50,3 @@
     style="position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none;opacity:.01"></video>
 
 {@render children?.()}
-
-<!-- TEMP DEBUG: remove once the TV's reported viewport width is known -->
-<div style="position:fixed;bottom:0;left:0;z-index:9999;background:#000;color:#0f0;
-	font:bold 28px monospace;padding:8px 14px;">
-	CSS {vw}×{vh} · DPR {dpr}
-</div>
