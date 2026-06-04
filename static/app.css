@@ -7,8 +7,8 @@ html { font-size: 100%; }                                  /* laptops */
 @media (min-width: 1440px) { html { font-size: 110%; } }   /* large desktop */
 @media (min-width: 1920px) { html { font-size: 120%; } }   /* 1080p */
 @media (min-width: 2560px) { html { font-size: 130%; } }   /* 1440p — 27" monitor */
-@media (min-width: 3000px) { html { font-size: 165%; } }   /* entry 4K / large panels */
-@media (min-width: 3840px) { html { font-size: 210%; } }   /* 4K — 60" TV */
+@media (min-width: 3000px) { html { font-size: 200%; } }   /* entry 4K / large panels */
+@media (min-width: 3840px) { html { font-size: 280%; } }   /* 4K — 60" TV */
 
 /* ---- Prevent text selection & scrollbars on the TV ---- */
 * {
