@@ -19,6 +19,13 @@ body {
 @media (min-width: 2560px) {
   body { font-size: 96px; }
 }
+/* Large 4K TVs (60"+ are almost always 3840px-wide 4K panels) */
+@media (min-width: 3000px) {
+  body { font-size: 120px; }
+}
+@media (min-width: 3840px) {
+  body { font-size: 140px; }
+}
 
 /* ---- Override Milligram container ---- */
 .container {
