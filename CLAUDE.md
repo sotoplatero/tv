@@ -66,7 +66,7 @@ Required variables (in `.env` locally, or set in the deploy platform's environme
 - `ODOO_USERNAME`: Odoo API username
 - `ODOO_PASSWORD`: Odoo API password
 
-Accessed via SvelteKit's **`$env/dynamic/private`** (server-side, read at runtime). This is deliberate: `$env/static/private` inlines values at *build* time, but containerized deploys (Dokploy/Dokku) inject env vars at *runtime* — using the static import resulted in empty values and a "Missing required Odoo environment variables" error. A `.env.example` template is committed at the repo root.
+Accessed via SvelteKit's **`$env/dynamic/private`** (server-side, read at runtime). This is deliberate: `$env/static/private` inlines values at *build* time, but the containerized Dokploy deploy injects env vars at *runtime* — using the static import resulted in empty values and a "Missing required Odoo environment variables" error. A `.env.example` template is committed at the repo root.
 
 ### TV Display Features
 - **Auto-refresh**: data reloads every 30s via `invalidate('app:time-tracking')` (no full page reload). A header clock updates every second.
@@ -76,7 +76,7 @@ Accessed via SvelteKit's **`$env/dynamic/private`** (server-side, read at runtim
 
 ## Deployment
 
-Deployed via Docker (multi-stage `Dockerfile`). Works on both Dokploy and Dokku.
+Deployed to **Dokploy** via Docker (multi-stage `Dockerfile`). Dokploy builds from the GitHub repo, so a push to `main` (`git push origin main`) is what triggers a deploy.
 
 ### Dokploy
 - Build type: **Dockerfile** (not Railpack). If Railpack is used it fails copying `.env.example`, which is why that template is committed.
@@ -86,27 +86,6 @@ Deployed via Docker (multi-stage `Dockerfile`). Works on both Dokploy and Dokku.
 ### Dockerfile notes
 - Multi-stage build on `node:20-alpine` (build stage → production stage), exposes port 3000.
 - pnpm is **pinned**: `RUN npm install -g pnpm@10.0.0` in both stages (matches `pnpm-lock.yaml` v9.0 / local pnpm 10). This replaced `corepack prepare pnpm@latest`, which broke the build — `pnpm@latest` (now v11) drifted from the lockfile and corepack hit signature/fetch issues on Alpine. Keep this pin in sync with the lockfile.
-
-### Dokku Deployment
-The application is also configured for deployment to Dokku using Docker:
-
-1. **Dockerfile**: Multi-stage build using Node.js 20 Alpine
-   - Build stage: Installs dependencies and builds the application
-   - Production stage: Only production dependencies and built application
-   - Exposes port 3000
-
-2. **Environment Variables**: Set these in Dokku before deploying:
-   ```bash
-   dokku config:set APP_NAME ODOO_URL=https://your-odoo.com
-   dokku config:set APP_NAME ODOO_DATABASE=your_db
-   dokku config:set APP_NAME ODOO_USERNAME=your_user
-   dokku config:set APP_NAME ODOO_PASSWORD=your_password
-   ```
-
-3. **Deploy**: Push to Dokku git remote:
-   ```bash
-   git push dokku main
-   ```
 
 ## Important Notes
 
