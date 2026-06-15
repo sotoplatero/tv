@@ -70,8 +70,8 @@
     <table class="roster">
       <colgroup>
         <col style="width: 20%" />
-        <col style="width: 28%" />
-        <col style="width: 42%" />
+        <col style="width: 18%" />
+        <col style="width: 52%" />
         <col style="width: 10%" />
       </colgroup>
       <thead>
