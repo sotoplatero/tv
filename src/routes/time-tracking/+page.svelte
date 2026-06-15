@@ -69,10 +69,10 @@
   {#if data.records.length > 0}
     <table class="roster">
       <colgroup>
-        <col style="width: 22%" />
-        <col style="width: 34%" />
-        <col style="width: 22%" />
-        <col style="width: 22%" />
+        <col style="width: 20%" />
+        <col style="width: 28%" />
+        <col style="width: 42%" />
+        <col style="width: 10%" />
       </colgroup>
       <thead>
         <tr>

@@ -118,13 +118,13 @@ header h2 {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #8a93a0;
-  padding: 0.4em 0.8em;
+  padding: 0.4em 0.5em;
   border-bottom: 0.12em solid #e1e4e8;
 }
 .roster tbody td {
   font-size: 1em;
   color: #2c2c2c;
-  padding: 0.75em 0.8em;
+  padding: 0.75em 0.5em;
   border-bottom: 0.08em solid #eef0f2;
   white-space: nowrap;
   overflow: hidden;
